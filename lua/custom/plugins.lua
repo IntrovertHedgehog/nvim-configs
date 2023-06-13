@@ -1,34 +1,44 @@
 local plugins = {
   {
-    {
-      "neovim/nvim-lspconfig",
-      dependencies = {
-        "jose-elias-alvarez/null-ls.nvim",
-        config = function()
-          require "custom.configs.null-ls"
-        end,
-      },
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      "jose-elias-alvarez/null-ls.nvim",
       config = function()
-        require "plugins.configs.lspconfig"
-        require "custom.configs.lspconfig"
+        require "custom.configs.null-ls"
       end,
     },
+    config = function()
+      require "plugins.configs.lspconfig"
+      require "custom.configs.lspconfig"
+    end,
   },
   {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
+        "shellcheck",
+        "lua-language-server",
+        "stylua",
+        -- javascript
+        "prettier",
         "eslint_d",
         "quick-lint-js",
         "typescript-language-server",
-        "lua-language-server",
-        "prettier",
-        "stylua",
+        -- python
+        "ruff",
+        "isort",
+        "black",
+        -- java
+        "google-java-format",
+        "jdtls",
       },
     },
   },
   {
     "windwp/nvim-ts-autotag",
+    init = function ()
+      require("core.utils").lazy_load "nvim-ts-autotag"
+    end,
     config = function()
       require("nvim-ts-autotag").setup()
     end,
@@ -109,6 +119,19 @@ local plugins = {
       },
     },
   },
+  -- {
+  --   "mfussenegger/nvim-jdtls",
+  --   init = function ()
+  --     require("core.utils").lazy_load "nvim-jdtls"
+  --   end,
+  --   opts = {
+  --     cmd = { "/home/linuxbrew/.linuxbrew/bin/jdtls" },
+  --     root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
+  --   },
+  --   config = function(_, opts)
+  --     require("jdtls").start_or_attach(opts)
+  --   end,
+  -- },
 }
 
 return plugins

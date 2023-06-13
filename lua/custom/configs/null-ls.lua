@@ -7,16 +7,13 @@ local sources = {
   formatting.prettier,
   formatting.stylua,
   lint.shellcheck,
-  -- lint.eslint_d.with {
-  --   diagnostics_format = "[eslint] #{m}\n(#{c})",
-  -- },
-  lint.pylint.with {
-    diagnostics_postprocess = function(diagnostic)
-      diagnostic.code = diagnostic.message_id
-    end,
+  lint.eslint_d.with {
+    diagnostics_format = "[eslint] #{m}\n(#{c})",
   },
+  formatting.ruff,
   formatting.isort,
   formatting.black,
+  formatting.google_java_format,
 }
 
 null_ls.setup {

@@ -1,7 +1,6 @@
 local M = {}
 M.nvimtree = {
   plugin = true,
-
   n = {
     ["]m"] = {
       function()
@@ -22,6 +21,15 @@ M.nvimtree = {
       "Select Bookmark",
     },
   },
+}
+
+M.general = {
+  n = {
+    ["<C-h>"] = { "<cmd> TmuxNavigateLeft<CR>", "Left Pane"},
+    ["<C-l>"] = { "<cmd> TmuxNavigateRight<CR>", "Right Pane"},
+    ["<C-j>"] = { "<cmd> TmuxNavigateDown<CR>", "Lower Pane"},
+    ["<C-k>"] = { "<cmd> TmuxNavigateUp<CR>", "Upper Pane"},
+  }
 }
 
 return M

@@ -1,5 +1,9 @@
 local plugins = {
   {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "jose-elias-alvarez/null-ls.nvim",
@@ -36,7 +40,7 @@ local plugins = {
   },
   {
     "windwp/nvim-ts-autotag",
-    init = function ()
+    init = function()
       require("core.utils").lazy_load "nvim-ts-autotag"
     end,
     config = function()
@@ -107,31 +111,38 @@ local plugins = {
     opts = {
       ensure_installed = {
         "lua",
-        "markdown",
-        "markdown_inline",
-        "json",
         "html",
         "css",
-        "tsx",
         "javascript",
         "typescript",
+        "tsx",
+        "json",
+        "java",
+        "markdown_inline",
+        "markdown",
         "python",
+        "bash",
+        "regex",
       },
     },
   },
-  -- {
-  --   "mfussenegger/nvim-jdtls",
-  --   init = function ()
-  --     require("core.utils").lazy_load "nvim-jdtls"
-  --   end,
-  --   opts = {
-  --     cmd = { "/home/linuxbrew/.linuxbrew/bin/jdtls" },
-  --     root_dir = vim.fs.dirname(vim.fs.find({ "gradlew", ".git", "mvnw" }, { upward = true })[1]),
-  --   },
-  --   config = function(_, opts)
-  --     require("jdtls").start_or_attach(opts)
-  --   end,
-  -- },
+  {
+    "nvim-tree/nvim-web-devicons",
+    opts = function()
+      return {
+        default = true,
+        strict = true,
+        override = require("nvchad_ui.icons").devicons,
+        override_by_filename = {
+          [".gitignore"] = {
+            icon = "",
+            color = "#f1502f",
+            name = "Gitignore",
+          },
+        },
+      }
+    end,
+  },
 }
 
 return plugins

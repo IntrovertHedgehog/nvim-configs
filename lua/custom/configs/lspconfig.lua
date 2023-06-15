@@ -12,6 +12,21 @@ for _, server in ipairs(servers) do
   }
 end
 
+lspconfig.pylsp.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = { "W391" },
+          maxLineLength = 100,
+        },
+      },
+    },
+  },
+}
+
 lspconfig.jdtls.setup {
   on_attach = on_attach,
   capabilities = capabilities,

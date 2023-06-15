@@ -143,6 +143,10 @@ local plugins = {
       }
     end,
   },
+  {
+    "tpope/vim-obsession",
+    cmd = { "Obsession" },
+  },
 }
 
 return plugins

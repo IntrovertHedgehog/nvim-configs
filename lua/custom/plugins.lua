@@ -145,7 +145,16 @@ local plugins = {
   },
   {
     "tpope/vim-obsession",
+    lazy = false,
     cmd = { "Obsession" },
+  },
+  {
+    "nvim-tree/nvim-tree.lua",
+    opts = function()
+      local default = require "plugins.configs.nvimtree"
+      local custom = require "custom.configs.nvimtree"
+      return vim.tbl_deep_extend("force", default, custom)
+    end,
   },
 }
 

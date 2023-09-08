@@ -35,6 +35,8 @@ local plugins = {
         -- java
         "google-java-format",
         "jdtls",
+        -- latex
+        "texlab"
       },
     },
   },

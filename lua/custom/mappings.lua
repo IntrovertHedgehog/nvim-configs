@@ -1,4 +1,11 @@
 local M = {}
+
+M.disabled = {
+  n = {
+    ["<leader>ca"] = "",
+  },
+}
+
 M.nvimtree = {
   plugin = true,
   n = {

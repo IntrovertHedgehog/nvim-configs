@@ -14,6 +14,7 @@ local sources = {
   formatting.isort,
   formatting.black,
   formatting.google_java_format,
+  formatting.latexindent,
 }
 
 null_ls.setup {

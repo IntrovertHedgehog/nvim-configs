@@ -36,7 +36,7 @@ local plugins = {
         "google-java-format",
         "jdtls",
         -- latex
-        "texlab"
+        "texlab",
       },
     },
   },
@@ -134,7 +134,7 @@ local plugins = {
       return {
         default = true,
         strict = true,
-        override = require("nvchad_ui.icons").devicons,
+        override = require "nvchad.icons.devicons", 
         override_by_filename = {
           [".gitignore"] = {
             icon = "",

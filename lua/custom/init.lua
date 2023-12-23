@@ -1,5 +1,6 @@
 local opt = vim.opt
 
+opt.number = true
 opt.scrolloff = 5
 opt.relativenumber = true
 opt.guicursor = "i:blinkwait700-blinkoff400-blinkon250"

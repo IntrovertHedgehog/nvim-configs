@@ -5,6 +5,7 @@ local lint = null_ls.builtins.diagnostics
 
 local sources = {
   lint.shellcheck,
+  lint.djlint,
   -- lint.eslint_d.with {
   --   diagnostics_format = "[eslint] #{m}\n(#{c})",
   -- },

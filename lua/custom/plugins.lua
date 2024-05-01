@@ -195,6 +195,15 @@ local plugins = {
       require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "custom.configs.harpoon"
+    end,
+    lazy = false
+  }
 }
 
 return plugins

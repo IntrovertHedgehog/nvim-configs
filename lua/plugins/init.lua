@@ -153,11 +153,13 @@ local default_plugins = {
       {
         -- snippet plugin
         "L3MON4D3/LuaSnip",
+        version = "v2.*",
         dependencies = "rafamadriz/friendly-snippets",
         opts = { history = true, updateevents = "TextChanged,TextChangedI" },
         config = function(_, opts)
           require("plugins.configs.others").luasnip(opts)
         end,
+        build = "make install_jsregexp"
       },
 
       -- autopairing of (){}[] etc

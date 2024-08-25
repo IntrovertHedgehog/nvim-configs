@@ -2,8 +2,8 @@ local harpoon = require("harpoon")
 
 harpoon.setup()
 
-vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>a", function() harpoon:list():add() end, {desc = "Add file to harpoon"})
+vim.keymap.set("n", "<leader>e", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, {desc = "Explore files added to harpoon"})
 
 vim.keymap.set("n", "<A-1>", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<A-2>", function() harpoon:list():select(2) end)

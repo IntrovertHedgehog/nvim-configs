@@ -203,6 +203,11 @@ local plugins = {
       require "custom.configs.harpoon"
     end,
     lazy = false
+  },
+  {
+    "tpope/vim-fugitive",
+    branch = "master",
+    lazy = false
   }
 }
 

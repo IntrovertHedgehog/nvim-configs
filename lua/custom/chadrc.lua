@@ -1,6 +1,6 @@
 local M = {}
 M.ui = {
-  theme = "tokyonight",
+  theme = "tokyodark",
   tabufline = { enabled = false },
 }
 M.plugins = "custom.plugins"

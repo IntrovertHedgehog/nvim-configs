@@ -134,7 +134,7 @@ local plugins = {
       return {
         default = true,
         strict = true,
-        override = require "nvchad.icons.devicons", 
+        override = require "nvchad.icons.devicons",
         override_by_filename = {
           [".gitignore"] = {
             icon = "",
@@ -147,7 +147,7 @@ local plugins = {
   },
   {
     "tpope/vim-obsession",
-    lazy = false,
+    lazy = true,
     cmd = { "Obsession" },
   },
   {
@@ -202,13 +202,25 @@ local plugins = {
     config = function()
       require "custom.configs.harpoon"
     end,
-    lazy = false
+    -- not lazy cuz on loading file the marked
+    -- files marked from last session is saved
+    lazy = false,
   },
   {
     "tpope/vim-fugitive",
     branch = "master",
-    lazy = false
-  }
+    lazy = true,
+    cmd = { "G", "Git", "Gdiffsplit", "Gedit", "Gread", "Gwrite", "Grep", "GMove", "GDelete", "GBrowse" },
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local default = require "plugins.configs.telescope"
+      local custom = require "custom.configs.telescope"
+      local merged = vim.tbl_deep_extend("force", default, custom)
+      return merged
+    end,
+  },
 }
 
 return plugins

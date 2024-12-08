@@ -13,8 +13,6 @@ local sources = {
   formatting.prettier,
   formatting.stylua,
   formatting.ruff,
-  formatting.isort,
-  formatting.black,
   formatting.google_java_format,
   formatting.latexindent,
 }

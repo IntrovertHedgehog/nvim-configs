@@ -38,10 +38,13 @@ M.lspconfig = {
     ["<leader>wd"] = { "<cmd>Lspsaga show_workspace_diagnostics<CR>", "Workspace Diagnostics" },
     ["<leader>K"] = { "<cmd>Lspsaga hover_doc ++keep<CR>", "Persistent Hover" },
     ["<leader>ca"] = { "<cmd>Lspsaga code_action<CR>", "Code Actions" },
+    ["<leader>D"] = { "<cmd>Lspsaga peek_definition<CR>", "Peek Definition" },
+    ["<leader>s"] = { "<cmd>Lspsaga outline<CR>", "Peek Definition" },
   },
 }
 
-M.general = {
+M.tmux_navigation = {
+  plugin = true,
   n = {
     ["<C-h>"] = { "<cmd>TmuxNavigateLeft<CR>", "Left Pane" },
     ["<C-l>"] = { "<cmd>TmuxNavigateRight<CR>", "Right Pane" },

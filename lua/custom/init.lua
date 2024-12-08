@@ -3,10 +3,11 @@ local opt = vim.opt
 opt.number = true
 opt.scrolloff = 5
 opt.relativenumber = true
-opt.guicursor = "i:blinkwait700-blinkoff400-blinkon250"
+opt.guicursor = "i:ver30-blinkwait50-blinkoff50-blinkon100"
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.exrc = true
+opt.synmaxcol = 256
 
 -- telescope open file in insert mode -> fold disable on opening (fix via issue 559)
 vim.api.nvim_create_autocmd("BufRead", {
@@ -24,7 +25,3 @@ vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
   command = "setfiletype dockerfile"
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
-  pattern = "*",
-  command = "normal zR",
-})

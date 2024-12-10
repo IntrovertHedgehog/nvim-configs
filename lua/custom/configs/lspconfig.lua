@@ -3,7 +3,7 @@ local lspconfig = require "lspconfig"
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local servers = { "quick_lint_js", "ts_ls", "texlab", "css_variables", "cssls", "bashls", "jedi_language_server" }
+local servers = { "quick_lint_js", "ts_ls", "texlab", "ruff", "css_variables", "cssls", "bashls", "jedi_language_server" }
 
 for _, server in ipairs(servers) do
   lspconfig[server].setup {

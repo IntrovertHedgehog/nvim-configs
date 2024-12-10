@@ -1,4 +1,4 @@
--- All plugins have lazy=true by default,to load a plugin on startup just lazy=false
+-- All plugins have lazy=true by default,to load a plugin on startup just lazy=falseplus
 -- List of all default plugins & their definitions
 local default_plugins = {
 

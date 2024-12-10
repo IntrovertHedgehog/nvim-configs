@@ -8,11 +8,12 @@ local sources = {
   -- lint.eslint_d.with {
   --   diagnostics_format = "[eslint] #{m}\n(#{c})",
   -- },
+  lint.ruff,
   lint.cpplint,
   formatting.clang_format.with { extra_args = { "--style", "Google" } },
   formatting.prettier,
   formatting.stylua,
-  formatting.ruff,
+  formatting.ruff.with({args = {"format", "-"}}),
   formatting.google_java_format,
   formatting.latexindent,
 }

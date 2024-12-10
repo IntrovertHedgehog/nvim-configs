@@ -1,3 +1,4 @@
+local utils = require "custom.utils"
 local M = {}
 
 M.disabled = {
@@ -50,6 +51,24 @@ M.tmux_navigation = {
     ["<C-l>"] = { "<cmd>TmuxNavigateRight<CR>", "Right Pane" },
     ["<C-j>"] = { "<cmd>TmuxNavigateDown<CR>", "Lower Pane" },
     ["<C-k>"] = { "<cmd>TmuxNavigateUp<CR>", "Upper Pane" },
+  },
+}
+
+M.general = {
+  n = {
+    ["<leader>o"] = {
+      require("custom.configs.tmux-attach").open_picker,
+    },
+    ["<leader>u"] = {
+      require("custom.configs.tmux-attach").send_cmd,
+      "Execute current line in selected tmux pane",
+    },
+  },
+  v = {
+    ["<leader>u"] = {
+      require("custom.configs.tmux-attach").send_cmd_vis,
+      "Execute current line in selected tmux pane",
+    },
   },
 }
 

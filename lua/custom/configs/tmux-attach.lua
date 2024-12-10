@@ -51,9 +51,7 @@ M.send_cmd_vis = function()
   local vst = vim.fn.getpos "v"
   local ven = vim.fn.getpos "."
   if vst[2] > ven[2] or (vst[2] == ven[2] and vst[3] > ven[3]) then
-    local tmp = vst
-    vst = ven
-    ven = tmp
+    vst, ven = ven, vst
   end
 
   local text = {}
@@ -62,27 +60,19 @@ M.send_cmd_vis = function()
     text = vim.api.nvim_buf_get_text(0, vst[2] - 1, vst[3] - 1, ven[2] - 1, ven[3], {})
   elseif mode == "V" then
     text = vim.api.nvim_buf_get_lines(0, vst[2] - 1, ven[2], false)
-  elseif mode == "CTRL-V" then
-    vim.notify("Block visual mode not supported", 4)
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "v", false)
-    return
-    -- for lno = vst[2] - 1, ven[2] - 1 do
-    --   print(lno)
-    --   table.insert(
-    --     text,
-    --     (vim.api.nvim_buf_get_text(
-    --       0,
-    --       lno,
-    --       math.min(vst[3] - 1, vim.fn.col "$" - 1),
-    --       lno,
-    --       math.min(ven[3], vim.fn.col "$" - 1),
-    --       {}
-    --     ))[1]
-    --   )
-    -- end
+  elseif mode == "\22" then
+    if vst[3] > ven[3] then
+      vst[3], ven[3] = ven[3], vst[3]
+    end
+
+    local uncut_text = vim.api.nvim_buf_get_lines(0, vst[2] - 1, ven[2], false)
+    for _, v in ipairs(uncut_text) do
+      print(v)
+      table.insert(text, v:sub(vst[3], ven[3]))
+    end
   end
 
-  vim.g.log = { vst, ven, text }
+  vim.g.log = { vst, ven, text, mode }
 
   for _, cmd in ipairs(text) do
     cmd = cmd:gsub('"', '\\"')

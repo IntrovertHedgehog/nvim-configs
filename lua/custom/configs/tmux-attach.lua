@@ -72,8 +72,6 @@ M.send_cmd_vis = function()
     end
   end
 
-  vim.g.log = { vst, ven, text, mode }
-
   for _, cmd in ipairs(text) do
     cmd = cmd:gsub('"', '\\"')
     os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter')

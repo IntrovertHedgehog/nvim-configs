@@ -30,7 +30,6 @@ M.tmux_capture = function()
     local cmdlist = M.capture("ps --ppid " .. comp[3] .. " -o comm", true):sub(9, -2):gsub("\n", " -")
     table.insert(processes_panes, {comp[1] .. " /" .. dir .. " | -" .. cmdlist, comp[4]})
   end
-  vim.g.log = processes_panes
   return processes_panes
 end
 

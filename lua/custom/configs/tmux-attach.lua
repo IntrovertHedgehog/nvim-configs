@@ -30,7 +30,7 @@ M.open_picker = function()
     })
     :find()
 
-  vim.b.target_tmux_pane = "side:5.3"
+  -- vim.b.target_tmux_pane = "side:5.3"
 end
 
 M.send_cmd = function()
@@ -38,9 +38,14 @@ M.send_cmd = function()
     return vim.notify("No tmux pane attached to this buffer", 4)
   end
   local cmd = vim.api.nvim_buf_get_lines(0, vim.fn.getcurpos()[2] - 1, vim.fn.getcurpos()[2], false)[1]
+  cmd = cmd:gsub("\\", "\\\\")
   cmd = cmd:gsub('"', '\\"')
+  cmd = cmd:gsub("%$", "\\$")
+  cmd = cmd:gsub("`", "\\`")
+  cmd = cmd:gsub(";$", "\\;")
+  vim.g.log = 'tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter'
   -- vim.cmd('silent! !tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter')
-  os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter')
+  os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
 end
 
 M.send_cmd_vis = function()
@@ -73,8 +78,12 @@ M.send_cmd_vis = function()
   end
 
   for _, cmd in ipairs(text) do
+    cmd = cmd:gsub("\\", "\\\\")
     cmd = cmd:gsub('"', '\\"')
-    os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter')
+    cmd = cmd:gsub("%$", "\\$")
+    cmd = cmd:gsub("`", "\\`")
+    cmd = cmd:gsub(";$", "\\;")
+    os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
   end
 
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "v", false)

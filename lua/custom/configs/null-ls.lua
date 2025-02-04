@@ -10,6 +10,8 @@ local sources = {
   -- },
   lint.ruff,
   lint.cpplint,
+  lint.buf,
+  formatting.buf,
   formatting.clang_format.with { extra_args = { "--style", "Google" } },
   formatting.prettier,
   formatting.stylua,

@@ -12,7 +12,8 @@ local servers = {
   "cssls",
   "bashls",
   "jedi_language_server",
-  "cmake",
+  "protols",
+  "neocmake"
 }
 
 for _, server in ipairs(servers) do
@@ -46,4 +47,5 @@ lspconfig.clangd.setup {
     "clangd",
     "--offset-encoding=utf-16",
   },
+  filetypes = {"c", "cpp", "objc", "objcpp", "cuda"}
 }

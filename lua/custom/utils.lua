@@ -21,14 +21,15 @@ M.capture = function(cmd, raw)
 end
 
 M.tmux_capture = function()
-  local raw_panes = M.capture('tmux list-panes -a -F "#S:#I[#W].#P #{pane_current_path} #{pane_pid} #D"', false)
+  -- using * as dilimiter, do not use this as name
+  local raw_panes = M.capture('tmux list-panes -a -F "#S:#I[#W].#P*/#{b:pane_current_path}*#{pane_pid}*#D"', false)
   local processes_panes = {}
   for _, pane in ipairs(raw_panes) do
     -- comp: pane_name dir pid pane_id
-    local comp = M.split(pane, " ")
-    local _, dir = comp[2]:match "(.*/)(.*)"
+    local comp = M.split(pane, "*")
+    -- local dir = comp[2] -- :match "(.*/)(.*)"
     local cmdlist = M.capture("ps --ppid " .. comp[3] .. " -o comm", true):sub(9, -2):gsub("\n", " -")
-    table.insert(processes_panes, {comp[1] .. " /" .. dir .. " | -" .. cmdlist, comp[4]})
+    table.insert(processes_panes, {comp[1] .. " " .. comp[2] .. " | -" .. cmdlist, comp[4]})
   end
   return processes_panes
 end

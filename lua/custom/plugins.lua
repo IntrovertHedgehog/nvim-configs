@@ -126,6 +126,10 @@ local plugins = {
         "bash",
         "regex",
       },
+      highlight = {
+        enable = true,
+        disable = { "latex" },
+      },
     },
   },
   {
@@ -219,6 +223,13 @@ local plugins = {
       local custom = require "custom.configs.telescope"
       local merged = vim.tbl_deep_extend("force", default, custom)
       return merged
+    end,
+  },
+  {
+    "lervag/vimtex",
+    lazy = false, -- we don't want to lazy load VimTeX
+    init = function()
+      require "custom.configs.vimtex"()
     end,
   },
 }

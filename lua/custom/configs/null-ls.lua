@@ -11,6 +11,7 @@ local sources = {
   lint.ruff,
   lint.cpplint,
   lint.buf,
+  -- lint.trivy,
   formatting.buf,
   formatting.clang_format.with { extra_args = { "--style", "Google" } },
   formatting.prettier,

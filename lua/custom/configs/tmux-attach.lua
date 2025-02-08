@@ -45,7 +45,8 @@ M.send_cmd = function()
   cmd = cmd:gsub(";$", "\\;")
   vim.g.log = 'tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter'
   -- vim.cmd('silent! !tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter')
-  os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
+  os.execute('tmux send-keys -t -l "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
+  os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" Enter > /dev/null')
 end
 
 M.send_cmd_vis = function()
@@ -83,7 +84,9 @@ M.send_cmd_vis = function()
     cmd = cmd:gsub("%$", "\\$")
     cmd = cmd:gsub("`", "\\`")
     cmd = cmd:gsub(";$", "\\;")
-    os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
+    -- os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
+    os.execute('tmux send-keys -t -l "' .. vim.b.target_tmux_pane .. '" "' .. cmd .. '" Enter > /dev/null')
+    os.execute('tmux send-keys -t "' .. vim.b.target_tmux_pane .. '" Enter > /dev/null')
   end
 
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), "v", false)

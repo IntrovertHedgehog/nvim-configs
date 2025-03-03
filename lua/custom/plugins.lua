@@ -228,13 +228,12 @@ local plugins = {
   {
     "lervag/vimtex",
     lazy = false, -- we don't want to lazy load VimTeX
-    init = function()
+    config = function()
       require "custom.configs.vimtex"()
     end,
   },
   {
     "mfussenegger/nvim-dap",
-    lazy = false,
     config = function()
       require "custom.configs.nvim-dap"
     end,
@@ -242,7 +241,10 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    lazy = false,
+    keys = { "<leader>d" },
+    init = function()
+      require("core.utils").load_mappings "dap"
+    end,
     config = function()
       require "custom.configs.nvim-dap-ui"
     end,

@@ -71,4 +71,103 @@ M.general = {
   },
 }
 
+M.dap = {
+  plugin = true,
+  n = {
+    ["<F5>"] = {
+      function()
+        require("dap").continue()
+      end,
+      "continue",
+    },
+    ["<F9>"] = {
+      function()
+        require("dap").step_over()
+      end,
+      "step over",
+    },
+    ["<F10>"] = {
+      function()
+        require("dap").step_into()
+      end,
+      "step into",
+    },
+    ["<F11>"] = {
+      function()
+        require("dap").step_out()
+      end,
+      "step out",
+    },
+    ["<F12>"] = {
+      function()
+        require("dap").step_back()
+      end,
+      "step back",
+    },
+    ["<leader>db"] = {
+      function()
+        require("dap").toggle_breakpoint()
+      end,
+      "toogle breakpoint",
+    },
+    ["<leader>dB"] = {
+      function()
+        require("dapui").float_element("breakpoints")
+      end,
+      "list breakpoint",
+    },
+    ["<leader>dp"] = {
+      function()
+        require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+      end,
+      "set log point",
+    },
+    ["<leader>dc"] = {
+      function()
+        require("dap").clear_breakpoints()
+      end,
+      "clear breakpoints",
+    },
+    ["<leader>dl"] = {
+      function()
+        require("dap").run_last()
+      end,
+      "run last",
+    },
+    ["<leader>dr"] = {
+      function()
+        require("dap").restart()
+      end,
+      "restart session",
+    },
+    ["<leader>dt"] = {
+      function()
+        require("dap").terminate()
+      end,
+      "terminate session",
+    },
+    ["<leader>dh"] = {
+      function()
+        require("dap.ui.widgets").hover()
+      end,
+      "variable value hover",
+    },
+    ["<leader>do"] = {
+      function()
+        require("dapui").toggle()
+      end,
+      "toggle debugger UI",
+    },
+  },
+
+  v = {
+    ["<leader>dh"] = {
+      function()
+        require("dap.ui.widgets").hover()
+      end,
+      "variable value hover",
+    },
+  },
+}
+
 return M

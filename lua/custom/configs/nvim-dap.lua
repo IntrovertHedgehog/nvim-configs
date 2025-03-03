@@ -1,9 +1,9 @@
-local dap = require("dap")
+local dap = require "dap"
 
 dap.adapters.gdb = {
   type = "executable",
   command = "gdb",
-  args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+  args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
 }
 
 local gdb = {
@@ -46,44 +46,18 @@ dap.configurations.c = gdb
 dap.configurations.cpp = gdb
 
 -- keymap
-vim.keymap.set("n", "<F5>", function()
-  require("dap").continue()
-end)
-vim.keymap.set("n", "<F10>", function()
-  require("dap").step_over()
-end)
-vim.keymap.set("n", "<F11>", function()
-  require("dap").step_into()
-end)
-vim.keymap.set("n", "<F12>", function()
-  require("dap").step_out()
-end)
-vim.keymap.set("n", "<Leader>db", function()
-  require("dap").toggle_breakpoint()
-end)
-vim.keymap.set("n", "<Leader>dB", function()
-  require("dap").set_breakpoint()
-end)
-vim.keymap.set("n", "<Leader>lp", function()
-  require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
-end)
-vim.keymap.set("n", "<Leader>dr", function()
-  require("dap").repl.open()
-end)
-vim.keymap.set("n", "<Leader>dl", function()
-  require("dap").run_last()
-end)
-vim.keymap.set({ "n", "v" }, "<Leader>dh", function()
-  require("dap.ui.widgets").hover()
-end)
-vim.keymap.set({ "n", "v" }, "<Leader>dp", function()
-  require("dap.ui.widgets").preview()
-end)
-vim.keymap.set("n", "<Leader>df", function()
-  local widgets = require "dap.ui.widgets"
-  widgets.centered_float(widgets.frames)
-end)
-vim.keymap.set("n", "<Leader>ds", function()
-  local widgets = require "dap.ui.widgets"
-  widgets.centered_float(widgets.scopes)
-end)
+-- vim.keymap.set("n", "<F5>", dap.continue, { desc = "" })
+-- vim.keymap.set("n", "<F9>", dap.step_over, { desc = "" })
+-- vim.keymap.set("n", "<F10>", dap.step_into, { desc = "" })
+-- vim.keymap.set("n", "<F11>", dap.step_out, { desc = "" })
+-- vim.keymap.set("n", "<F12>", dap.step_back, { desc = "" })
+-- vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "" })
+-- vim.keymap.set("n", "<leader>dp", function()
+--   dap.set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
+-- end, { desc = "" })
+-- vim.keymap.set("n", "<leader>dB", dap.list_breakpoints, { desc = "" })
+-- vim.keymap.set("n", "<leader>dc", dap.clear_breakpoints, { desc = "" })
+-- vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "" })
+-- vim.keymap.set("n", "<leader>dr", dap.restart, { desc = "" })
+-- vim.keymap.set("n", "<leader>dt", dap.terminate, { desc = "" })
+-- vim.keymap.set({ "n", "v" }, "<Leader>dh", require("dap.ui.widgets").hover, { desc = "" })

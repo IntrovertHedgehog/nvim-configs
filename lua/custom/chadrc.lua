@@ -1,6 +1,6 @@
 local M = {}
 M.ui = {
-  theme = "tokyodark",
+  theme = "palenight",
   tabufline = { enabled = false },
   statusline = {
     overriden_modules = function(modules)

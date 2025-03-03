@@ -232,6 +232,21 @@ local plugins = {
       require "custom.configs.vimtex"()
     end,
   },
+  {
+    "mfussenegger/nvim-dap",
+    lazy = false,
+    config = function()
+      require "custom.configs.nvim-dap"
+    end,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    lazy = false,
+    config = function()
+      require "custom.configs.nvim-dap-ui"
+    end,
+  },
 }
 
 return plugins

@@ -104,29 +104,11 @@ M.dap = {
       end,
       "step back",
     },
-    ["<leader>db"] = {
-      function()
-        require("dap").toggle_breakpoint()
-      end,
-      "toogle breakpoint",
-    },
     ["<leader>dB"] = {
       function()
-        require("dapui").float_element("breakpoints")
+        require("dapui").float_element "breakpoints"
       end,
       "list breakpoint",
-    },
-    ["<leader>dp"] = {
-      function()
-        require("dap").set_breakpoint(nil, nil, vim.fn.input "Log point message: ")
-      end,
-      "set log point",
-    },
-    ["<leader>dc"] = {
-      function()
-        require("dap").clear_breakpoints()
-      end,
-      "clear breakpoints",
     },
     ["<leader>dl"] = {
       function()
@@ -166,6 +148,30 @@ M.dap = {
         require("dap.ui.widgets").hover()
       end,
       "variable value hover",
+    },
+  },
+}
+
+M.persistent_breakpoints = {
+  plugin = true,
+  n = {
+    ["<leader>db"] = {
+      function()
+        require("persistent-breakpoints.api").toggle_breakpoint()
+      end,
+      "toogle breakpoint",
+    },
+    ["<leader>dp"] = {
+      function()
+        require("persistent-breakpoints.api").set_log_point()
+      end,
+      "set log point",
+    },
+    ["<leader>dc"] = {
+      function()
+        require("persistent-breakpoints.api").clear_all_breakpoints()
+      end,
+      "clear breakpoints",
     },
   },
 }

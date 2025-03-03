@@ -241,12 +241,34 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    keys = { "<leader>d" },
+    lazy = false,
     init = function()
       require("core.utils").load_mappings "dap"
     end,
     config = function()
       require "custom.configs.nvim-dap-ui"
+    end,
+  },
+  {
+    "Weissle/persistent-breakpoints.nvim",
+    dependencies = { "mfussenegger/nvim-dap" },
+    event = "BufReadPost",
+    init = function()
+      require("core.utils").load_mappings "persistent_breakpoints"
+    end,
+    config = function()
+      require("persistent-breakpoints").setup {
+        save_dir = vim.fn.stdpath "data" .. "/nvim_checkpoints",
+        -- when to load the breakpoints? "BufReadPost" is recommanded.
+        load_breakpoints_event = { "BufReadPost" },
+        -- record the performance of different function. run :lua require('persistent-breakpoints.api').print_perf_data() to see the result.
+        perf_record = false,
+        -- perform callback when loading a persisted breakpoint
+        --- @param opts DAPBreakpointOptions options used to create the breakpoint ({condition, logMessage, hitCondition})
+        --- @param buf_id integer the buffer the breakpoint was set on
+        --- @param line integer the line the breakpoint was set on
+        on_load_breakpoint = nil,
+      }
     end,
   },
 }

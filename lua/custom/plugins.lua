@@ -241,7 +241,7 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    lazy = false,
+    ft = require("custom.variables.dap_ft"),
     init = function()
       require("core.utils").load_mappings "dap"
     end,
@@ -252,7 +252,7 @@ local plugins = {
   {
     "Weissle/persistent-breakpoints.nvim",
     dependencies = { "mfussenegger/nvim-dap" },
-    event = "BufReadPost",
+    ft = require("custom.variables.dap_ft"),
     init = function()
       require("core.utils").load_mappings "persistent_breakpoints"
     end,

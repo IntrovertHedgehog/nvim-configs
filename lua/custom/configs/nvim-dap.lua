@@ -44,6 +44,7 @@ local gdb = {
 
 dap.configurations.c = gdb
 dap.configurations.cpp = gdb
+dap.configurations.rust = gdb
 
 -- keymap
 -- vim.keymap.set("n", "<F5>", dap.continue, { desc = "" })

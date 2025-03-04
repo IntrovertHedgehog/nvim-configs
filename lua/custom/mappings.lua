@@ -108,7 +108,13 @@ M.dap = {
       function()
         require("dapui").float_element "breakpoints"
       end,
-      "list breakpoint",
+      "list breakpoint float",
+    },
+    ["<leader>dq"] = {
+      function()
+        require("dap").list_breakpoints(true)
+      end,
+      "list breakpoint quick",
     },
     ["<leader>dl"] = {
       function()

@@ -57,16 +57,17 @@ M.general = {
   n = {
     ["<leader>o"] = {
       require("custom.configs.tmux-attach").open_picker,
+      "Picker"
     },
     ["<leader>u"] = {
       require("custom.configs.tmux-attach").send_cmd,
-      "Execute current line in selected tmux pane",
+      "Send",
     },
   },
   v = {
     ["<leader>u"] = {
       require("custom.configs.tmux-attach").send_cmd_vis,
-      "Execute current line in selected tmux pane",
+      "Send",
     },
   },
 }
@@ -106,7 +107,7 @@ M.dap = {
     },
     ["<leader>dB"] = {
       function()
-        require("dapui").float_element "breakpoints"
+        require("dapui").float_element("breakpoints", { enter = true })
       end,
       "list breakpoint float",
     },

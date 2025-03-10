@@ -19,6 +19,7 @@ local sources = {
   formatting.prettier,
   formatting.stylua,
   formatting.ruff.with { args = { "format", "-" } },
+  formatting.isort,
   formatting.google_java_format,
   formatting.latexindent,
 }

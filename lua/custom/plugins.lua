@@ -101,10 +101,6 @@ local plugins = {
       on_attach = function(bufnr)
         local api = require "nvim-tree.api"
         api.config.mappings.default_on_attach(bufnr)
-        -- start custom mappings
-        vim.keymap.set("n", "]m", api.marks.navigate.next)
-        vim.keymap.set("n", "[m", api.marks.navigate.prev)
-        vim.keymap.set("n", "'m", api.marks.navigate.select)
       end,
     },
   },
@@ -227,7 +223,7 @@ local plugins = {
   },
   {
     "lervag/vimtex",
-    lazy = false, -- we don't want to lazy load VimTeX
+    lazy = false, -- VimTex is already lazy loaded mostly
     config = function()
       require "custom.configs.vimtex"()
     end,
@@ -241,7 +237,7 @@ local plugins = {
   {
     "rcarriga/nvim-dap-ui",
     dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-    ft = require("custom.variables.dap_ft"),
+    ft = require "custom.variables.dap_ft",
     init = function()
       require("core.utils").load_mappings "dap"
     end,
@@ -252,7 +248,7 @@ local plugins = {
   {
     "Weissle/persistent-breakpoints.nvim",
     dependencies = { "mfussenegger/nvim-dap" },
-    ft = require("custom.variables.dap_ft"),
+    ft = require "custom.variables.dap_ft",
     init = function()
       require("core.utils").load_mappings "persistent_breakpoints"
     end,

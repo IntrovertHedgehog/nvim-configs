@@ -21,7 +21,7 @@ local sources = {
   formatting.ruff.with { args = { "format", "-" } },
   formatting.isort,
   formatting.google_java_format,
-  formatting.latexindent,
+  -- formatting.latexindent,
 }
 
 null_ls.setup {

@@ -3,14 +3,15 @@ local plugins = {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
+  -- {
+  --   "nvimtools/none-ls.nvim",
+  --   config = function()
+  --     require "custom.configs.null-ls"
+  --   end,
+  -- },
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      "jose-elias-alvarez/null-ls.nvim",
-      config = function()
-        require "custom.configs.null-ls"
-      end,
-    },
+    -- dependencies = {{"nvimtools/none-ls.nvim"}},
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"
@@ -266,6 +267,16 @@ local plugins = {
         on_load_breakpoint = nil,
       }
     end,
+  },
+  {
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+      cmd = { "TodoQuickFix", "TodoLocList", "TodoTelescope" },
+      config = function()
+        require("todo-comments").setup()
+      end,
+    },
   },
 }
 

@@ -13,7 +13,6 @@ local sources = {
   null_ls.builtins.formatting.isort,
   null_ls.builtins.formatting.google_java_format,
   require "none-ls-shellcheck.diagnostics",
-  null_ls.builtins.formatting.prettier,
 }
 
 null_ls.setup {

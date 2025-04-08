@@ -26,7 +26,7 @@ local plugins = {
         "lua-language-server",
         "stylua",
         -- javascript
-        "prettier",
+        "prettierd",
         "eslint_d",
         "quick-lint-js",
         "typescript-language-server",
@@ -70,22 +70,26 @@ local plugins = {
       "hbs",
     },
   },
-  {
-    "MunifTanjim/prettier.nvim",
-    config = function()
-      require "custom.configs.prettier"
-    end,
-    ft = {
-      "css",
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
-      "json",
-      "scss",
-      "less",
-    },
-  },
+  -- {
+  --   "MunifTanjim/prettier.nvim",
+  --   config = function()
+  --     require "custom.configs.prettier"
+  --   end,
+  --   ft = {
+  --     "css",
+  --     "graphql",
+  --     "html",
+  --     "javascript",
+  --     "javascriptreact",
+  --     "json",
+  --     "less",
+  --     "markdown",
+  --     "scss",
+  --     "typescript",
+  --     "typescriptreact",
+  --     "yaml",
+  --   },
+  -- },
   {
     "glepnir/lspsaga.nvim",
     event = "LspAttach",

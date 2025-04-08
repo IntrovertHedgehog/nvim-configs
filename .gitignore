@@ -7,3 +7,4 @@ coc-settings.json
 lazy-lock.json
 Session.vim
 after
+**/.DS_Store

@@ -1,27 +1,19 @@
 local null_ls = require "null-ls"
 
-local formatting = null_ls.builtins.formatting
-local lint = null_ls.builtins.diagnostics
-
 local sources = {
-  lint.shellcheck,
-  -- lint.eslint_d.with {
-  --   diagnostics_format = "[eslint] #{m}\n(#{c})",
-  -- },
-  -- lint.ruff,
-  lint.cpplint,
-  lint.buf,
-  lint.flake8,
-  lint.jsonlint,
-  -- lint.trivy,
-  formatting.buf,
-  formatting.clang_format.with { extra_args = { "--style", "Google" } },
-  formatting.prettier,
-  formatting.stylua,
-  formatting.ruff.with { args = { "format", "-" } },
-  formatting.isort,
-  formatting.google_java_format,
-  -- formatting.latexindent,
+  null_ls.builtins.diagnostics.buf,
+  null_ls.builtins.formatting.buf,
+  require "none-ls.diagnostics.cpplint",
+  null_ls.builtins.formatting.clang_format.with { extra_args = { "--style", "Google" } },
+  -- require "none-ls.diagnostics.eslint_d",
+  -- require "none-ls.formatting.eslint_d",
+  null_ls.builtins.formatting.stylua,
+  require "none-ls.diagnostics.ruff",
+  require "none-ls.formatting.ruff",
+  null_ls.builtins.formatting.isort,
+  null_ls.builtins.formatting.google_java_format,
+  require "none-ls-shellcheck.diagnostics",
+  null_ls.builtins.formatting.prettier,
 }
 
 null_ls.setup {

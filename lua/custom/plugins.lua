@@ -3,15 +3,16 @@ local plugins = {
     "christoomey/vim-tmux-navigator",
     lazy = false,
   },
-  -- {
-  --   "nvimtools/none-ls.nvim",
-  --   config = function()
-  --     require "custom.configs.null-ls"
-  --   end,
-  -- },
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = {"nvimtools/none-ls-extras.nvim", "gbprod/none-ls-shellcheck.nvim", "gbprod/none-ls-luacheck.nvim"},
+    config = function()
+      require "custom.configs.null-ls"
+    end,
+  },
   {
     "neovim/nvim-lspconfig",
-    -- dependencies = {{"nvimtools/none-ls.nvim"}},
+    dependencies = {{"nvimtools/none-ls.nvim"}},
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"

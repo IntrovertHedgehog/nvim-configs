@@ -45,7 +45,11 @@ lspconfig.clangd.setup {
   capabilities = capabilities,
   cmd = {
     "clangd",
+    "--background-index",
     "--offset-encoding=utf-16",
+    "--all-scopes-completion",
+    "--header-insertion=iwyu",
+    "--header-insertion-decorators",
   },
   filetypes = {"c", "cpp", "objc", "objcpp", "cuda"}
 }

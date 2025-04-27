@@ -13,7 +13,8 @@ local servers = {
   "bashls",
   "jedi_language_server",
   "protols",
-  "neocmake"
+  "neocmake",
+  "metals",
 }
 
 for _, server in ipairs(servers) do
@@ -38,7 +39,10 @@ end
 --   },
 -- }
 
-lspconfig.jdtls.setup {}
+lspconfig.jdtls.setup {
+  cmd = { "jdtls" },
+  cmd_env = { JAVA_HOME = "/usr/lib/jvm/java-21-openjdk" },
+}
 
 lspconfig.clangd.setup {
   on_attach = on_attach,
@@ -51,5 +55,5 @@ lspconfig.clangd.setup {
     "--header-insertion=iwyu",
     "--header-insertion-decorators",
   },
-  filetypes = {"c", "cpp", "objc", "objcpp", "cuda"}
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 }

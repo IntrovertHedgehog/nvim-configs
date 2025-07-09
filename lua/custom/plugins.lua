@@ -291,6 +291,8 @@ local plugins = {
       build = "cmake -S. -Bbuild -DCMAKE_POLICY_VERSION_MINIMUM=3.5 -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release",
     },
   },
+  {"kevinhwang91/nvim-bqf",
+  lazy = false}
 }
 
 return plugins

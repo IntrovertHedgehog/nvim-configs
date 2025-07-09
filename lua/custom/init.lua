@@ -1,4 +1,7 @@
 local opt = vim.opt
+local g = vim.g
+
+g.markdown_recommended_style = 0
 
 opt.number = true
 opt.scrolloff = 5

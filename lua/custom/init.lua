@@ -11,6 +11,7 @@ opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 opt.exrc = true
 opt.synmaxcol = 256
+opt.signcolumn = "yes"
 
 -- telescope open file in insert mode -> fold disable on opening (fix via issue 559)
 vim.api.nvim_create_autocmd("BufRead", {

@@ -217,7 +217,7 @@ local plugins = {
     "tpope/vim-fugitive",
     branch = "master",
     lazy = true,
-    cmd = { "G", "Git", "Gdiffsplit", "Gedit", "Gread", "Gwrite", "Grep", "GMove", "GDelete", "GBrowse" },
+    cmd = { "G", "Git", "Gdiffsplit",  "Gvdiffsplit", "Gedit", "Gread", "Gwrite", "Grep", "GMove", "GDelete", "GBrowse" },
   },
   {
     "nvim-telescope/telescope.nvim",

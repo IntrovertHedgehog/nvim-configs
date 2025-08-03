@@ -9,6 +9,7 @@ local plugins = {
     config = function()
       require "custom.configs.null-ls"
     end,
+    ft = {"markdown"}
   },
   {
     "neovim/nvim-lspconfig",

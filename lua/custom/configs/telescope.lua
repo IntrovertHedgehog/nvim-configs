@@ -1,4 +1,14 @@
 local options = {
+  defaults = {
+    mappings = {
+      i = {
+        ["<A-b>"] = function()
+          vim.api.nvim_echo({ { "this event logged" } }, true, {})
+          vim.cmd "normal b"
+        end,
+      },
+    },
+  },
   pickers = {
     buffers = {
       mappings = {

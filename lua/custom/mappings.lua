@@ -1,5 +1,26 @@
 local M = {}
 
+M.emacs = {
+  i = {
+    ["<A-f>"] = { "<cmd>normal w<CR>", "word next" },
+    ["<A-b>"] = { "<cmd>normal b<CR>", "word back" },
+    ["<C-f>"] = { "<cmd>normal l<CR>", "right" },
+    ["<C-b>"] = { "<cmd>normal h<CR>", "left" },
+    ["<C-a>"] = { "<cmd>normal ^<CR>", "start of line" },
+    ["<C-e>"] = { "<cmd>normal $<CR>", "end of line" },
+  },
+  c = {
+    ["<A-f>"] = { "<C-Right>", "word next" },
+    ["<A-b>"] = { "<C-Left>", "word back" },
+    ["<C-f>"] = { "<Right>", "right" },
+    ["<C-b>"] = { "<Left>", "left" },
+    ["<C-a>"] = { "<Home>", "start of line" },
+    ["<C-e>"] = { "<End>", "end of line" },
+    ["<A-j>"] = { "<Down>", "next hist cmd cxt aware"},
+    ["<A-k>"] = { "<Up>", "prev hist cmd cxt aware"},
+  }
+}
+
 M.disabled = {
   n = {
     ["<leader>ca"] = "",
@@ -55,19 +76,19 @@ M.tmux_navigation = {
 
 M.general = {
   n = {
-    ["<leader>o"] = {
+    ["<leader>ta"] = {
       require("custom.configs.tmux-attach").open_picker,
-      "Picker"
+      "Tmux Pane Picker",
     },
-    ["<leader>u"] = {
+    ["<leader>te"] = {
       require("custom.configs.tmux-attach").send_cmd,
-      "Send",
+      "Tmux Execute Line",
     },
   },
   v = {
     ["<leader>u"] = {
       require("custom.configs.tmux-attach").send_cmd_vis,
-      "Send",
+      "Tmux Execute Line",
     },
   },
 }

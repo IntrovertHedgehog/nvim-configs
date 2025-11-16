@@ -19,40 +19,24 @@ local default_plugins = {
   },
 
   {
-    "zbirenbaum/nvterm",
-    init = function()
-      require("core.utils").load_mappings "nvterm"
-    end,
-    opts = {
-      terminals = {
-        shell = vim.o.shell,
-        list = {},
-        type_opts = {
-          float = {
-            relative = "editor",
-            row = 0.05,
-            col = 0.05,
-            width = 0.9,
-            height = 0.7,
-            border = "single",
-          },
-          horizontal = { location = "rightbelow", split_ratio = 0.3 },
-          vertical = { location = "rightbelow", split_ratio = 0.5 },
+    -- amongst your other plugins
+    {
+      "akinsho/toggleterm.nvim",
+      keys = { "<A-i>" },
+      opts = {
+        open_mapping = "<A-i>",
+        hide_numbers = false,
+        direction = "float",
+        float_opts = {
+          width = function()
+            return math.floor(vim.o.columns * 0.9)
+          end,
+          height = function()
+            return math.floor((vim.o.lines - 4) * 0.9)
+          end,
         },
-      },
-      behavior = {
-        autoclose_on_quit = {
-          enabled = false,
-          confirm = true,
-        },
-        close_on_exit = true,
-        auto_insert = true,
       },
     },
-    config = function(_, opts)
-      require "base46.term"
-      require("nvterm").setup(opts)
-    end,
   },
 
   {
@@ -188,8 +172,8 @@ local default_plugins = {
         "saadparwaiz1/cmp_luasnip",
         "hrsh7th/cmp-nvim-lua",
         "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
         "hrsh7th/cmp-path",
+        "hrsh7th/cmp-buffer",
       },
     },
     opts = function()
